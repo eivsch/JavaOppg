@@ -20,16 +20,16 @@ public class Klippekort extends Reisekort
 
   private static int antallSolgte = 0;      // Det totale antall solgte klippekort
   private static int sumAlleKlippekort = 0; // Den totale summen som er satt inn
-                                            // på alle klippekortene til sammen.
+                                            // på alle dagskortene til sammen.
 	/*
   < Konstruktør som mottar det beløpet som skal settes inn på kortet
     ved opprettelsen av det. Foruten å sørge for å initialisere klassens
     datafelt, skal den også sørge for å oppdatere antall solgte klippekort
     og ikke minst summen det er solgt klippekort for så langt.
   */
-  public Klippekort( int beløp )
+  public Klippekort( int pris, int kortNr, int beløp )
   {
-		super();
+		super( pris, kortNr );
 		antallSolgte++;
 		saldo = beløp;
   	sumAlleKlippekort += beløp;
@@ -65,15 +65,16 @@ public class Klippekort extends Reisekort
       Returverdien skal angi utfallet av valideringen.  >
     */
     Calendar nå = Calendar.getInstance();
-    if( nå.before( getUtløpstidspunkt() )
+    if( nå.before( getUtløpstidspunkt() ))
     	return true;
     else
     {
 			if( saldo >= PRIS_PER_REISE )
 			{
-				setUtløpstidspunkt( nå.add(Calendar.HOUR_OF_DAY, 1) );
+				nå.add(Calendar.HOUR_OF_DAY, 1);
+				setUtløpstidspunkt( nå );
 				saldo -= PRIS_PER_REISE;
-				return true
+				return true;
 			}
 		}
 
