@@ -29,11 +29,17 @@ public class Administrasjonsvindu extends JFrame
 	{
 		super("ADMINISTRASJON");
 		salgsInfo = new JButton("Salgsinformasjon");
-		adm = new JTextArea(8,35);
+		adm = new JTextArea(7,45);
 		adm.setEditable(false);
 
 		Container c = getContentPane();
-		c.add
+		c.setLayout(new FlowLayout());
+		c.add(salgsInfo);
+		c.add(adm);
+
+		setSize(300,200);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 }
