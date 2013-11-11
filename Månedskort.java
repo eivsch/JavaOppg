@@ -10,19 +10,38 @@ Gretar Ævarsson		(s198586)
 Sigurd Hølleland	(s198597)
 
 */
+import java.util.Calendar;
 
-
-public class Månedskort < arver Reisekort  >
+public class Månedskort extends Reisekort
 {
   public final static int MÅNEDSPRIS = 1040;
-  <  private datafelt  >
+  private static int sumAlleMånedskort;
+  private static int antallSolgte;
 
-  public Månedskort() { ... }
+  public Månedskort(int pris, int kortNr)
+  {
+	  super(pris, kortNr);
+	  sumAlleMånedskort += pris;
+      antallSolgte++;
+  }
 
-  public static int getSumAlleMånedskort() { ... }
+  public static int getSumAlleMånedskort()
+  {
+	  return sumAlleMånedskort;
+  }
 
-  public static int getAntallSolgte() { ... }
+  public static int getAntallSolgte()
+  {
+	  return antallSolgte;
+  }
 
-  public boolean gyldig() { ... }  // redefinert
+  public boolean gyldig()
+  {
+	  Calendar nå = Calendar.getInstance();
+	  if(nå.before(getUtløpstidspunkt() ) )
+	    return true;
+
+	  return false;
+  }
 
 }  // end of class Månedskort
