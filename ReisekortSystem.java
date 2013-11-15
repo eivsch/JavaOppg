@@ -133,56 +133,17 @@ public class ReisekortSystem
     String utskrift = "";
     int sum, sumKlipp, antKlipp, sumDag, antDag, sumMnd, antMnd;
 
+		antKlipp = Klippekort.getAntallSolgte();
+		sumKlipp = Klippekort.getSumAlleKlippekort();
 
-		Klippekort k = new Klippekort(0);
-		antKlipp = k.getAntallSolgte()-1;
-		sumKlipp = k.getSumAlleKlippekort();
+		antDag = Dagskort.getAntallSolgte();
+		sumDag = Dagskort.getSumAlleDagskort();
 
-		Dagskort d = new Dagskort();
-		antDag = d.getAntallSolgte()-1;
-		sumDag = d.getSumAlleDagskort();
-
-		Månedskort m = new Månedskort();
-		antMnd = m.getAntallSolgte()-1;
-		sumMnd = m.getSumAlleMånedskort();
+		antMnd = Månedskort.getAntallSolgte();
+		sumMnd = Månedskort.getSumAlleMånedskort();
 
 		sum = sumKlipp + sumDag + sumMnd;
 
-/*
-		for( int i = 0; i < reisekortene.length; i++ )
-		{
-			if( reisekortene[i] instanceof Klippekort )
-			{
-				antKlipp = reisekortene[i].getAntallSolgte();
-				sumKlipp = reisekortene[i].getSumAlleKlippekort();
-				sum += sumKlipp;
-				break;
-			}
-		}
-
-		for( int i = 0; i < reisekortene.length; i++ )
-		{
-			if( reisekortene[i] instanceof Dagskort )
-			{
-				antDag = reisekortene[i].getAntallSolgte();
-				sumDag = reisekortene[i].getSumAlleKlippekort();
-				sum += sumDag;
-				break;
-			}
-		}
-
-		for( int i = 0; i < reisekortene.length; i++ )
-		{
-			if( reisekortene[i] instanceof Månedskort )
-			{
-				antMnd = reisekortene[i].getAntallSolgte();
-				sumMnd = reisekortene[i].getSumAlleKlippekort();
-				sum += sumMnd;
-				break;
-			}
-		}
-
-*/
 		utskrift = "Det er solgt kort for kr. " + sum + ".-\n" +
 							 "Av disse er det solgt\n" +
 							 antKlipp + " klippekort for tilsammen kr. " + sumKlipp + ".-\n" +
