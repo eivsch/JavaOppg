@@ -12,12 +12,11 @@
  a) Programmer metoden public void kontrollerReisekort()
 */
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-
-
-< import-setninger >
-
-public class Kontrollvindu < ... >
+public class Kontrollvindu extends JFrame implements ActionListener
 {
   private JTextField kortIdFelt;
   private JTextArea display;
@@ -26,17 +25,33 @@ public class Kontrollvindu < ... >
 
   public Kontrollvindu(ReisekortSystem r)
   {
-    < kaller superklassens konstruktør >
-
+    super( "BILLET KONTROLL" );
     kortsystem = r;
 
-    < oppretter lytteobjekt og knytter knappen til det. >
-    < setter opp brukergrensesnittet >
+		kortIdFelt = new JTextField( 10 );
+		display = new JTextArea( 10, 40 );
+		display.setEditable(false);
+		kontroll = new JButton( "Billet-kontroll" );
+
+    kontroll.addActionListener( this );
+
+    Container c = getContentPane();
+    c.setLayout( new FlowLayout() );
+
+    c.add( new JLabel("Reisekortnr: ") );
+    c.add( kortIdFelt );
+    c.add( kontroll );
+    c.add( display );
+
+		setSize(300,200);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
+
 
   public void kontrollerReisekort()
   {
-    < Metoden må lese inn kortets nummer og sjekke om det finnes
+    /*Metoden må lese inn kortets nummer og sjekke om det finnes
       blandt de registrerte kortene. Hvis det finnes og det er gyldig,
       skal følgende gjøre:
 
@@ -51,9 +66,22 @@ public class Kontrollvindu < ... >
       Hvis kortet er ugyldig, skal dette skrives i tekstområdet.
       For klippekort skal i tillegg saldoen skrives ut.
 
-      Hvis kortet er ukjent, skal dette skrives i tekstområdet.>
+      Hvis kortet er ukjent, skal dette skrives i tekstområdet
+    */
+
+		if( kortsystem.finnReisekort( Integer.parseInt(kortIdFelt.getText()) ) != null )
+		{
+			int kortNr = Integer.parseInt( kortIdFelt.getText() );
+
+			if( kortsystem. instanceof Klippekort )
+
   }
 
-  < privat lytteklasse >
+
+  public void actionPerformed( ActionEvent e )
+  {
+    if (e.getSource() == kontroll)
+    	kontrollerReisekort();
+	}
 
 }  // end of class Kontrollvindu
