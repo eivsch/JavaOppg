@@ -12,6 +12,7 @@ Sigurd Hølleland	(s198597)
 */
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Reisekortsalg extends JFrame
@@ -83,24 +84,24 @@ public class Reisekortsalg extends JFrame
 
     if(type == 1)
     {
-		Klippekort kp = new Klippekort(Integer.parseInt(beløpsfelt.getText()));
+		Klippekort kp = new Klippekort(Integer.parseInt(beløpsFelt.getText()));
 		kortsystem.settInnReisekort(kp);
-		kortNrFelt.setText(kp.getKortNr());
-		betalingsFelt.setText(kp.getSaldo());
+		kortNrFelt.setText("" + kp.getKortNr());
+		betalingsFelt.setText("" +kp.getSaldo());
 	}
     else if(type == 2)
     {
 		Dagskort dk = new Dagskort();
 		kortsystem.settInnReisekort(dk);
-		kortNrFelt.setText(dk.getKortNr());
-		betalingsFelt.setText(dk.getPris());
+		kortNrFelt.setText("" + dk.getKortNr());
+		betalingsFelt.setText("" + dk.getPris());
 	}
     else
     {
 		Månedskort mk = new Månedskort();
 		kortsystem.settInnReisekort(mk);
-		kortNrFelt.setText(mk.getKortNr());
-		betalingsFelt.setText(mk.getPris());
+		kortNrFelt.setText("" + mk.getKortNr());
+		betalingsFelt.setText("" + mk.getPris());
 	}
   }
 
@@ -115,21 +116,24 @@ public class Reisekortsalg extends JFrame
       skrives "error" i betalingsfeltet. >
     */
 
-    int beløp = Integer.parseInt(beløpsfelt.getText());
+    int beløp = Integer.parseInt(beløpsFelt.getText());
     if( ( kortsystem.finnReisekort(Integer.parseInt(kortNrFelt.getText())) != null ) && ( kortsystem.finnReisekort(Integer.parseInt(kortNrFelt.getText())) instanceof Klippekort ) )
     {
 		((Klippekort)(kortsystem.finnReisekort(Integer.parseInt(kortNrFelt.getText())))).ladOpp(beløp);
 	}
 
    }
-  private class Lytter
+
+  private class Lytter implements ActionListener
   {
+	  public void actionPerformed(ActionEvent e)
+	  {
+	    if(e.getSource () == klipp)
+	      nyttReisekort(KLIPP);
+	    if(e.getSource() == ladeknapp)
+	      ladOppKlippekort();
+	  }
 
-	  if(e.getSource () == klipp)
-	    nyttReisekort(KLIPP);
-	  if(e.getSource() == ladeknapp)
-	    ladOppKlippekort();
-
-  }
+  }//end of class Lytter
 
 } // end of class Reisekortsalg

@@ -134,15 +134,15 @@ public class ReisekortSystem
     int sum, sumKlipp, antKlipp, sumDag, antDag, sumMnd, antMnd;
 
 
-		Klippekort k = new Klippekort(0,0,0);
+		Klippekort k = new Klippekort(0);
 		antKlipp = k.getAntallSolgte()-1;
 		sumKlipp = k.getSumAlleKlippekort();
 
-		Dagskort d = new Dagskort(0,0);
+		Dagskort d = new Dagskort();
 		antDag = d.getAntallSolgte()-1;
 		sumDag = d.getSumAlleDagskort();
 
-		Månedskort m = new Månedskort(0,0);
+		Månedskort m = new Månedskort();
 		antMnd = m.getAntallSolgte()-1;
 		sumMnd = m.getSumAlleMånedskort();
 
