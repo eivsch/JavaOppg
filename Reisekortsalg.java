@@ -21,10 +21,9 @@ public class Reisekortsalg extends JFrame
   private JButton klipp, dag, mnd, ladeknapp;
   private JTextArea info;
   private Lytter lytter;
-  //private ReisekortSystem kortsystem;
+  private ReisekortSystem kortsystem;
 
-  //public Reisekortsalg(ReisekortSystem k)
-  public Reisekortsalg()
+  public Reisekortsalg(ReisekortSystem k)
   {
     super("KORTSALG");
     //kortsystem = k;
@@ -69,6 +68,8 @@ public class Reisekortsalg extends JFrame
     setVisible( true );
     setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
 
+    kortsystem = k;
+
   }
 
   public void nyttReisekort(int type)
@@ -79,6 +80,28 @@ public class Reisekortsalg extends JFrame
       inn i datasystemet, skal metoden skrive ut kortets nummer i tekstfeltet
       kortNrFelt og prisen som skal betales i tekstfeltet betalingsFelt. >
     */
+
+    if(type == 1)
+    {
+		Klippekort kp = new Klippekort(Integer.parseInt(beløpsfelt.getText()));
+		kortsystem.settInnReisekort(kp);
+		kortNrFelt.setText(kp.getKortNr());
+		betalingsFelt.setText(kp.getSaldo());
+	}
+    else if(type == 2)
+    {
+		Dagskort dk = new Dagskort();
+		kortsystem.settInnReisekort(dk);
+		kortNrFelt.setText(dk.getKortNr());
+		betalingsFelt.setText(dk.getPris());
+	}
+    else
+    {
+		Månedskort mk = new Månedskort();
+		kortsystem.settInnReisekort(mk);
+		kortNrFelt.setText(mk.getKortNr());
+		betalingsFelt.setText(mk.getPris());
+	}
   }
 
   public void ladOppKlippekort()
@@ -91,11 +114,22 @@ public class Reisekortsalg extends JFrame
       betales skrives i betalingsfeltet. Hvis kortnummeret er feil skal det
       skrives "error" i betalingsfeltet. >
     */
-  }
 
+    int beløp = Integer.parseInt(beløpsfelt.getText());
+    if( ( kortsystem.finnReisekort(Integer.parseInt(kortNrFelt.getText())) != null ) && ( kortsystem.finnReisekort(Integer.parseInt(kortNrFelt.getText())) instanceof Klippekort ) )
+    {
+		((Klippekort)(kortsystem.finnReisekort(Integer.parseInt(kortNrFelt.getText())))).ladOpp(beløp);
+	}
+
+   }
   private class Lytter
   {
 
-	}
+	  if(e.getSource () == klipp)
+	    nyttReisekort(KLIPP);
+	  if(e.getSource() == ladeknapp)
+	    ladOppKlippekort();
+
+  }
 
 } // end of class Reisekortsalg

@@ -68,7 +68,7 @@ public class ReisekortSystem
   public void settInnReisekort(Reisekort k)
   {
     /*
-    Metoden mottar et nytt reisekort som parameter og skal sette dette
+        Metoden mottar et nytt reisekort som parameter og skal sette dette
 		inn på første ledige plass i arrayen, under forutsetning av at det
 		ikke finnes et reisekort med samme nr i arrayen fra før.
 		Hvis arrayen er full, skal den først utvides med så mange

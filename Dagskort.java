@@ -22,9 +22,9 @@ public class Dagskort extends Reisekort
                                             // på alle dagskortene til sammen.
 
 
-  public Dagskort( int pris, int kortNr )
+  public Dagskort()
   {
-		super( pris, kortNr );
+		super(DAGSPRIS);
 		antallSolgte++;
 		sumAlleDagskort += DAGSPRIS;
 	}

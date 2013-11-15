@@ -18,10 +18,10 @@ public class Månedskort extends Reisekort
   private static int sumAlleMånedskort;
   private static int antallSolgte;
 
-  public Månedskort(int pris, int kortNr)
+  public Månedskort()
   {
-	  super(pris, kortNr);
-	  sumAlleMånedskort += pris;
+	  super(MÅNEDSPRIS);
+	  sumAlleMånedskort += MÅNEDSPRIS;
       antallSolgte++;
   }
 

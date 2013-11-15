@@ -21,13 +21,13 @@ public abstract class Reisekort
 
   private int kortNr;		// et unikt nummer som identifiserer hvert enkelt reisekort >
   private int pris;			// hva kortet koster i hele kroner >
-  private int teller; 	// hjelpevariabel for å generere et unikt kortNr
+  private int teller = 1; 	// hjelpevariabel for å generere et unikt kortNr
 
-  public Reisekort( int pris, int kortNr )
+  public Reisekort( int pris)
   {
 		this.pris = pris;
-		this.kortNr = kortNr;
-	}
+		kortNr = teller++;
+  }
 
 
 

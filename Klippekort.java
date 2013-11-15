@@ -29,13 +29,13 @@ public class Klippekort extends Reisekort
     datafelt, skal den også sørge for å oppdatere antall solgte klippekort
     og ikke minst summen det er solgt klippekort for så langt.
   */
-  public Klippekort( int pris, int kortNr, int beløp )
+  public Klippekort( int beløp )
   {
-		super( pris, kortNr );
+		super( PRIS_PER_REISE );
 		antallSolgte++;
 		saldo = beløp;
-  	sumAlleKlippekort += beløp;
-	}
+  	    sumAlleKlippekort += beløp;
+  }
 
 
 	public int getSaldo()

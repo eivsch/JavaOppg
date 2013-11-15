@@ -69,12 +69,30 @@ public class Kontrollvindu extends JFrame implements ActionListener
       Hvis kortet er ukjent, skal dette skrives i tekstområdet
     */
 
-		if( kortsystem.finnReisekort( Integer.parseInt(kortIdFelt.getText()) ) != null )
+        int kortNr = Integer.parseInt(kortIdFelt.getText());
+		if( kortsystem.finnReisekort( kortNr ) != null )
 		{
-			int kortNr = Integer.parseInt( kortIdFelt.getText() );
-
-			if( kortsystem. instanceof Klippekort )
-
+			if( ( kortsystem.finnReisekort(kortNr) ).gyldig() )
+			{
+				if( ( kortsystem.finnReisekort(kortNr )) instanceof Klippekort )
+				{
+					display.setText("Betalt kr. " + ((Klippekort)(kortsystem.finnReisekort(kortNr) )).PRIS_PER_REISE+".-" );
+	                display.append("Saldo: kr. " + ((Klippekort)(kortsystem.finnReisekort(kortNr) )).getSaldo()+".-");
+                    display.append("Gyldig til " + ((Klippekort)(kortsystem.finnReisekort(kortNr) )).gyldigTil());
+				}
+				else
+				  display.setText("Gyldig til " + (kortsystem.finnReisekort(kortNr )).gyldigTil());
+			}
+			else
+			{
+				if( ( kortsystem.finnReisekort(kortNr )) instanceof Klippekort )
+				  display.setText("Kortet er ikke gyldig!\nGjenværende Saldo: " + ((Klippekort)(kortsystem.finnReisekort(kortNr) )).getSaldo() + " kr.");
+				else
+				  display.setText("Kortet er ikke gyldig!");
+			}
+	     }
+	     else
+	       display.setText("Ukjent kort!");
   }
 
 
@@ -82,6 +100,6 @@ public class Kontrollvindu extends JFrame implements ActionListener
   {
     if (e.getSource() == kontroll)
     	kontrollerReisekort();
-	}
+  }
 
 }  // end of class Kontrollvindu
