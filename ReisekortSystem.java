@@ -79,7 +79,10 @@ public class ReisekortSystem
 		for( int i = 0; i < reisekortene.length; i++ )
 		{
 			if( reisekortene[i] == null )
+			{
 				full = false;
+				break;
+			}
 		}
 
 		if( full )
@@ -117,6 +120,8 @@ public class ReisekortSystem
 
     return null;
   }
+
+
 
   public static String inntjeningsInfo()
   {

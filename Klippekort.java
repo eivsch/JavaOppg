@@ -2,13 +2,15 @@
 
 Programmering høst 2013
 Obligatorsik Oppgave 4
-Oppgave 1b
+Oppgave 1b-c
 
 Gruppemedlemer:
 Eivind Schulstad	(s198752)
 Gretar Ævarsson		(s198586)
 Sigurd Hølleland	(s198597)
 
+b) Programmer klassens konstruktør og alle get-metodene
+c) Programmer metodene public boolean gyldig() og public void ladOpp( int beløp )
 */
 
 import java.util.Calendar;
@@ -20,7 +22,7 @@ public class Klippekort extends Reisekort
 
   private static int antallSolgte = 0;      // Det totale antall solgte klippekort
   private static int sumAlleKlippekort = 0; // Den totale summen som er satt inn
-                                            // på alle dagskortene til sammen.
+                                            // på alle klippekortene til sammen.
 	/*
   < Konstruktør som mottar det beløpet som skal settes inn på kortet
     ved opprettelsen av det. Foruten å sørge for å initialisere klassens
@@ -56,7 +58,8 @@ public class Klippekort extends Reisekort
 
   public boolean gyldig() // Blir redefinert her!
   {
-    /*< Metoden kalles hver gang man skal foreta en reise med klippekortet.
+    /*
+    	Metoden kalles hver gang man skal foreta en reise med klippekortet.
       Kortet er gyldig hvis det brukes innen utløpstidspunktet. (Det er gyldig
       i en time etter at man har betalt.) Hvis kortet brukes etter
       utløpstidspunktet, skal metoden sjekke om det er nok penger på kortet
@@ -67,15 +70,12 @@ public class Klippekort extends Reisekort
     Calendar nå = Calendar.getInstance();
     if( nå.before( getUtløpstidspunkt() ))
     	return true;
-    else
-    {
-			if( saldo >= PRIS_PER_REISE )
-			{
-				nå.add(Calendar.HOUR_OF_DAY, 1);
-				setUtløpstidspunkt( nå );
-				saldo -= PRIS_PER_REISE;
-				return true;
-			}
+    else if( saldo >= PRIS_PER_REISE )
+		{
+			nå.add(Calendar.HOUR_OF_DAY, 1);
+			setUtløpstidspunkt( nå );
+			saldo -= PRIS_PER_REISE;
+			return true;
 		}
 
 		return false;

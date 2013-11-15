@@ -9,6 +9,7 @@ Eivind Schulstad	(s198752)
 Gretar Ævarsson		(s198586)
 Sigurd Hølleland	(s198597)
 
+a) Fullfør definisjonen av Reisekort ved å erstatte all pseudo-kode med java-instruksjoner.
 */
 
 import java.util.Calendar;
@@ -30,9 +31,9 @@ public abstract class Reisekort
 
 
 
-	public void setUtløpstidspunkt( Calendar tidpunkt )
+	public void setUtløpstidspunkt( Calendar tidspunkt )
 	{
-		utløpstidspunkt = tidpunkt;
+		utløpstidspunkt = tidspunkt;
 	}
 
 

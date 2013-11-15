@@ -2,7 +2,7 @@
 
 Programmering høst 2013
 Obligatorsik Oppgave 4
-Oppgave 3
+Oppgave 4
 
 Gruppemedlemer:
 Eivind Schulstad	(s198752)
@@ -16,14 +16,15 @@ a) Programmer vindusklassen Administrasjonsvindu, slik at vinduet blir seende ut
    returneres fra inntjeningsInfo()-metoden i klassen ReisekortSystem vist i tekstområdet.
 */
 
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Administrasjonsvindu extends JFrame
+public class Administrasjonsvindu extends JFrame implements ActionListener
 {
 	private JButton salgsInfo;
 	private JTextArea adm;
+
 
 	public Administrasjonsvindu()
 	{
@@ -40,6 +41,17 @@ public class Administrasjonsvindu extends JFrame
 		setSize(300,200);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
-}
+
+
+  public void actionPerformed( ActionEvent e )
+  {
+    if (e.getSource() == salgsInfo)
+    {
+			ReisekortSystem r = new ReisekortSystem();
+			adm.setText("");
+			adm.setText( r.inntjeningsInfo() );
+		}
+	}
+
+}	// end of class Administrasjonsvindu
