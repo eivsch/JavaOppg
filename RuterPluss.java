@@ -2,8 +2,9 @@ public class RuterPluss
 {
 	public static void main( String[] args )
 	{
-		new Reisekortsalg( new ReisekortSystem() );
-		new Kontrollvindu(new ReisekortSystem());
+		ReisekortSystem r = new ReisekortSystem();
+		new Reisekortsalg( r );
+		new Kontrollvindu( r );
 		new Administrasjonsvindu();
 	}
 }

@@ -44,13 +44,13 @@ public class Klippekort extends Reisekort
 	}
 
 
-	public int getSumAlleKlippekort()
+	public static int getSumAlleKlippekort()
 	{
 		return sumAlleKlippekort;
 	}
 
 
-	public int getAntallSolgte()
+	public static int getAntallSolgte()
 	{
 		return antallSolgte;
 	}

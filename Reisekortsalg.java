@@ -24,7 +24,7 @@ public class Reisekortsalg extends JFrame
   private Lytter lytter;
   private ReisekortSystem kortsystem;
 
-  public Reisekortsalg(ReisekortSystem k)
+  public Reisekortsalg(ReisekortSystem k )
   {
     super("KORTSALG");
     //kortsystem = k;
@@ -36,8 +36,11 @@ public class Reisekortsalg extends JFrame
     betalingsFelt.setEditable(false);
 
     klipp = new JButton("Klippekort");
+    klipp.addActionListener( lytter );
     dag = new JButton("Dagskort");
+    dag.addActionListener( lytter );
     mnd = new JButton("Månedskort");
+    mnd.addActionListener( lytter );
     ladeknapp = new JButton("Opplading av klippekort");
 
     info = new JTextArea(3, 30);
@@ -132,6 +135,10 @@ public class Reisekortsalg extends JFrame
 	      nyttReisekort(KLIPP);
 	    if(e.getSource() == ladeknapp)
 	      ladOppKlippekort();
+	    if(e.getSource() == dag)
+	    	nyttReisekort( DAG );
+	    if(e.getSource() == mnd)
+	    	nyttReisekort( MÅNED );
 	  }
 
   }//end of class Lytter
