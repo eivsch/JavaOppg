@@ -148,7 +148,7 @@ public class ReisekortSystem
 
 		sum = sumKlipp + sumDag + sumMnd;
 
-		/*
+/*
 		for( int i = 0; i < reisekortene.length; i++ )
 		{
 			if( reisekortene[i] instanceof Klippekort )
@@ -181,8 +181,8 @@ public class ReisekortSystem
 				break;
 			}
 		}
-		*/
 
+*/
 		utskrift = "Det er solgt kort for kr. " + sum + ".-\n" +
 							 "Av disse er det solgt\n" +
 							 antKlipp + " klippekort for tilsammen kr. " + sumKlipp + ".-\n" +
